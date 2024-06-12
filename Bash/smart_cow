@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Erreur! Argument invalide!"
+    exit 1
+fi
+
+expression="$1"
+
+result=$(($1))
+
+if [ $result -lt 10 ]
+then
+    cowsay -e "0$result" $1
+else
+    cowsay -e "$result" $1
+fi

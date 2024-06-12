@@ -1,0 +1,35 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then #Verifie l'argument
+    echo "Erreur! Argument invalide!"
+    exit 1
+fi
+clear
+cpt=2
+for ((i=2; i<=$1; i++))
+do
+    prime=1
+    for ((cpt=2; cpt<$i; cpt++))
+    do
+        if [ $((i % cpt)) -eq 0 ]
+        then 
+            prime=0
+            break
+        fi
+    done
+    if [ $prime -eq 1 ]; then
+	echo $i >> premiers.log
+    fi
+done
+ligne=$(wc -l < premiers.log)
+for (( j=1; j<=$ligne; j++ ))
+do
+    clear #on met clear au debut de la boucle pour effacer l'ecran mais garder la vache a fin
+    if [ $j -ne $ligne ]; then
+	cowsay $(tail -n +$j premiers.log | head -n 1)
+    else
+	cowsay -T U $(tail -n +$j premiers.log | head -n 1)
+    fi
+    sleep 1s
+done
+rm -r premiers.log #on supprime le fichier qui contient les nombres premiers a la fin du programme

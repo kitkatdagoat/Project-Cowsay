@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then #On verifie si l'argument est valide
+    echo "Erreur! Argument invalide!"
+    exit 1
+fi
+clear 
+a=$(expr $1 - 1)
+for i in $(seq 1 $a) #On fait la boucle jusqu'a n-1 
+do 
+    cowsay $i
+    sleep 1s
+    clear
+done
+cowsay -T U $1 #La vache prononce le nombre n avec une langue

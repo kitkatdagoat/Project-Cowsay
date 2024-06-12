@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Vérifie si l'argument soit valide
+if [ $# -eq 0 ]; then
+    echo "Invalid arguments"
+    exit 1
+fi
+
+result=1
+fact=1
+
+
+for ((i=1; i<=$1; i++))
+do
+    fact=$(echo "scale=10; $fact * $i" | bc)
+    result=$(echo "scale=10; $result + 1 / $fact" | bc)
+done
+
+cowsay -f $(ls /usr/share/cowsay/cows | shuf -n 1) "Approximation du nombre d'Euler avec n=$1: $result"

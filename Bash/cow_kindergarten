@@ -1,0 +1,10 @@
+#!/bin/bash
+
+clear
+for i in {1..9}
+do 
+    cowsay $i
+    sleep 1s
+    clear
+done
+cowsay -T U 10

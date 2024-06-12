@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then #On verifie si l'argument soit valide
+    echo "Erreur! Argument invalide!"
+    exit 1
+fi
+clear 
+cpt=1 
+carre=1 
+stop=$(expr $1 \* $1)
+while [ $carre -lt $stop ]
+do
+    cowsay $carre
+    cpt=$(expr $cpt + 1) #cpt est le nombre avant caree pour la condition de la boucle
+    carre=$(expr $cpt \* $cpt) #la vache affiche carre 
+    sleep 1s
+    clear
+done
+cowsay -T U $(expr $1 \* $1)

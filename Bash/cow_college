@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then #Verifie l'argument
+    echo "Erreur! Argument invalide!"
+    exit 1
+fi
+clear
+x1=1 
+x2=1
+while [ $x2 -le $1 ]
+do 
+    cowsay $x1
+    cpt=$x1
+    x1=$x2
+    x2=$(expr $cpt + $x2)
+    sleep 1s
+    clear
+done
+cowsay -T U $x1
